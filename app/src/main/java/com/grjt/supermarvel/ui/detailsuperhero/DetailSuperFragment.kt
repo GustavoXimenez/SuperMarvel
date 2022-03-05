@@ -1,12 +1,10 @@
-package com.grjt.supermarvel
+package com.grjt.supermarvel.ui.detailsuperhero
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.grjt.supermarvel.R
 import com.grjt.supermarvel.databinding.FragmentDetailSuperBinding
-import com.grjt.supermarvel.databinding.FragmentSuperBinding
 
 class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
 
