@@ -1,7 +1,8 @@
-package com.grjt.supermarvel
+package com.grjt.supermarvel.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.grjt.supermarvel.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/superFragment">
+
+    <fragment
+        android:id="@+id/superFragment"
+        android:name="com.grjt.supermarvel.ui.superhero.SuperFragment"
+        android:label="fragment_super"
+        tools:layout="@layout/fragment_super" >
+        <action
+            android:id="@+id/action_superFragment_to_detailSuperFragment"
+            app:destination="@id/detailSuperFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSuperFragment"
+        android:name="com.grjt.supermarvel.ui.detailsuperhero.DetailSuperFragment"
+        android:label="fragment_detail_super"
+        tools:layout="@layout/fragment_detail_super" >
+        <argument
+            android:name="idSuperhero"
+            app:argType="integer" />
+    </fragment>
+</navigation>
