@@ -18,5 +18,9 @@
         android:id="@+id/detailSuperFragment"
         android:name="com.grjt.supermarvel.ui.detailsuperhero.DetailSuperFragment"
         android:label="fragment_detail_super"
-        tools:layout="@layout/fragment_detail_super" />
+        tools:layout="@layout/fragment_detail_super" >
+        <argument
+            android:name="idSuperhero"
+            app:argType="integer" />
+    </fragment>
 </navigation>
