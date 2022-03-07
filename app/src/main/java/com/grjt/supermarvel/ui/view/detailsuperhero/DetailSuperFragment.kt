@@ -10,21 +10,17 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.grjt.supermarvel.R
 import com.grjt.supermarvel.core.Resource
-import com.grjt.supermarvel.data.remote.SuperDataSource
 import com.grjt.supermarvel.databinding.FragmentDetailSuperBinding
-import com.grjt.supermarvel.ui.viewmodel.SuperViewModelFactory
 import com.grjt.supermarvel.ui.viewmodel.SuperheroViewModel
-import com.grjt.supermarvel.data.remote.RetrofitClient
-import com.grjt.supermarvel.data.repository.SuperRepositoryImpl
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
 
     private lateinit var binding: FragmentDetailSuperBinding
     private val args by navArgs<DetailSuperFragmentArgs>()
 
-    private val viewModel by viewModels<SuperheroViewModel> {
-        SuperViewModelFactory(SuperRepositoryImpl(SuperDataSource(RetrofitClient.webservice)))
-    }
+    private val viewModel: SuperheroViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

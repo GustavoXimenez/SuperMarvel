@@ -10,20 +10,16 @@ import com.google.android.material.snackbar.Snackbar
 import com.grjt.supermarvel.R
 import com.grjt.supermarvel.core.Resource
 import com.grjt.supermarvel.data.model.Superhero
-import com.grjt.supermarvel.data.remote.SuperDataSource
 import com.grjt.supermarvel.databinding.FragmentSuperBinding
-import com.grjt.supermarvel.ui.viewmodel.SuperViewModelFactory
 import com.grjt.supermarvel.ui.viewmodel.SuperheroViewModel
-import com.grjt.supermarvel.data.remote.RetrofitClient
-import com.grjt.supermarvel.data.repository.SuperRepositoryImpl
 import com.grjt.supermarvel.ui.view.superhero.adapter.SuperheroAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SuperFragment : Fragment(R.layout.fragment_super), SuperheroAdapter.OnSuperheroClickListener {
 
     private lateinit var binding: FragmentSuperBinding
-    private val viewModel by viewModels<SuperheroViewModel> {
-        SuperViewModelFactory(SuperRepositoryImpl(SuperDataSource(RetrofitClient.webservice)))
-    }
+    private val viewModel: SuperheroViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

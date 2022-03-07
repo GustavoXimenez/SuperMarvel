@@ -3,22 +3,21 @@ package com.grjt.supermarvel.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import com.grjt.supermarvel.core.Resource
-import com.grjt.supermarvel.data.repository.SuperRepository
 import com.grjt.supermarvel.domain.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
-
-    private val getSuperheroUseCase = GetSuperheroUseCase(repo)
-    private val getItemSuperheroUseCase = GetItemSuperheroUseCase(repo)
-    private val getComicSuperheroUseCase = GetComicSuperheroUseCase(repo)
-    private val getEventSuperheroUseCase = GetEventSuperheroUseCase(repo)
-    private val getSeriesSuperheroUseCase = GetSeriesSuperheroUseCase(repo)
-    private val getStorySuperheroUseCase = GetStorySuperheroUseCase(repo)
-
+@HiltViewModel
+class SuperheroViewModel @Inject constructor (
+    private val getSuperheroUseCase: GetSuperheroUseCase,
+    private val getItemSuperheroUseCase: GetItemSuperheroUseCase,
+    private val getComicSuperheroUseCase: GetComicSuperheroUseCase,
+    private val getEventSuperheroUseCase: GetEventSuperheroUseCase,
+    private val getSeriesSuperheroUseCase: GetSeriesSuperheroUseCase,
+    private val getStorySuperheroUseCase: GetStorySuperheroUseCase,
+): ViewModel() {
 
     fun onCreate() = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
@@ -76,8 +75,3 @@ class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
 
 }
 
-class SuperViewModelFactory(private val repo: SuperRepository): ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(SuperRepository::class.java).newInstance(repo)
-    }
-}
