@@ -1,18 +1,29 @@
-package com.grjt.supermarvel.presentation
+package com.grjt.supermarvel.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.grjt.supermarvel.core.Resource
-import com.grjt.supermarvel.repository.SuperRepository
+import com.grjt.supermarvel.data.repository.SuperRepository
+import com.grjt.supermarvel.domain.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
 
-    fun fetchSuperhero() = liveData(Dispatchers.IO) {
+    private val getSuperheroUseCase = GetSuperheroUseCase(repo)
+    private val getItemSuperheroUseCase = GetItemSuperheroUseCase(repo)
+    private val getComicSuperheroUseCase = GetComicSuperheroUseCase(repo)
+    private val getEventSuperheroUseCase = GetEventSuperheroUseCase(repo)
+    private val getSeriesSuperheroUseCase = GetSeriesSuperheroUseCase(repo)
+    private val getStorySuperheroUseCase = GetStorySuperheroUseCase(repo)
+
+
+    fun onCreate() = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.getSuperhero()))
+            emit(Resource.Success(getSuperheroUseCase()))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -21,7 +32,7 @@ class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
     fun fetchItemSuperhero(id: Int) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.getItemSuperhero(id)))
+            emit(Resource.Success(getItemSuperheroUseCase(id)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -30,7 +41,7 @@ class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
     fun fetchComicSuperhero(id: Int) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.getComicSuperhero(id)))
+            emit(Resource.Success(getComicSuperheroUseCase(id)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -39,7 +50,7 @@ class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
     fun fetchEventSuperhero(id: Int) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.getEventSuperhero(id)))
+            emit(Resource.Success(getEventSuperheroUseCase(id)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -48,7 +59,7 @@ class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
     fun fetchSeriesSuperhero(id: Int) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.getSeriesSuperhero(id)))
+            emit(Resource.Success(getSeriesSuperheroUseCase(id)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -57,7 +68,7 @@ class SuperheroViewModel(private val repo: SuperRepository): ViewModel() {
     fun fetchStoriesSuperhero(id: Int) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(Resource.Success(repo.getStoriesSuperhero(id)))
+            emit(Resource.Success(getStorySuperheroUseCase(id)))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }

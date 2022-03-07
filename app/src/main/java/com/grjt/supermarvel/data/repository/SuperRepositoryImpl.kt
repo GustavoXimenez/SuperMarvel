@@ -1,4 +1,4 @@
-package com.grjt.supermarvel.repository
+package com.grjt.supermarvel.data.repository
 
 import com.grjt.supermarvel.data.model.DataSuperhero
 import com.grjt.supermarvel.data.remote.SuperDataSource

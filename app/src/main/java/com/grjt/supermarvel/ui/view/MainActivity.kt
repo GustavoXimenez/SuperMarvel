@@ -1,4 +1,4 @@
-package com.grjt.supermarvel.ui
+package com.grjt.supermarvel.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

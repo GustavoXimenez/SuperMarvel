@@ -1,10 +1,8 @@
-package com.grjt.supermarvel.ui.superhero.adapter
+package com.grjt.supermarvel.ui.view.superhero.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
 import com.grjt.supermarvel.data.model.Superhero

@@ -2,7 +2,6 @@ package com.grjt.supermarvel.data.remote
 
 import com.grjt.supermarvel.application.AppConstants
 import com.grjt.supermarvel.data.model.DataSuperhero
-import com.grjt.supermarvel.repository.WebService
 
 class SuperDataSource(private val webService: WebService) {
 

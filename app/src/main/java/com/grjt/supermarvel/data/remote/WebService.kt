@@ -1,4 +1,4 @@
-package com.grjt.supermarvel.repository
+package com.grjt.supermarvel.data.remote
 
 import com.google.gson.GsonBuilder
 import com.grjt.supermarvel.application.AppConstants

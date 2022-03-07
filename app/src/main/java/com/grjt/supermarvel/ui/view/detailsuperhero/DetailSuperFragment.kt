@@ -1,7 +1,6 @@
-package com.grjt.supermarvel.ui.detailsuperhero
+package com.grjt.supermarvel.ui.view.detailsuperhero
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -13,11 +12,10 @@ import com.grjt.supermarvel.R
 import com.grjt.supermarvel.core.Resource
 import com.grjt.supermarvel.data.remote.SuperDataSource
 import com.grjt.supermarvel.databinding.FragmentDetailSuperBinding
-import com.grjt.supermarvel.presentation.SuperViewModelFactory
-import com.grjt.supermarvel.presentation.SuperheroViewModel
-import com.grjt.supermarvel.repository.RetrofitClient
-import com.grjt.supermarvel.repository.SuperRepositoryImpl
-import com.grjt.supermarvel.ui.superhero.adapter.SuperheroAdapter
+import com.grjt.supermarvel.ui.viewmodel.SuperViewModelFactory
+import com.grjt.supermarvel.ui.viewmodel.SuperheroViewModel
+import com.grjt.supermarvel.data.remote.RetrofitClient
+import com.grjt.supermarvel.data.repository.SuperRepositoryImpl
 
 class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
 
@@ -43,7 +41,7 @@ class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    result.data.data.results[0].let { item ->
+                    result.data[0].let { item ->
                         binding.txtName.text = item.name
                         val path = item.thumbnail.path
                         val extension = item.thumbnail.extension
@@ -60,7 +58,7 @@ class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
                                 is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                                 is Resource.Success -> {
                                     binding.progressBar.visibility = View.GONE
-                                    result.data.data.results[0].let { item ->
+                                    result.data[0].let { item ->
                                         binding.txtDescriptionComic.text = item.description
                                     }
                                 }
@@ -73,7 +71,7 @@ class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
                                 is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                                 is Resource.Success -> {
                                     binding.progressBar.visibility = View.GONE
-                                    result.data.data.results[0].let { item ->
+                                    result.data[0].let { item ->
                                         binding.txtDescriptionEvent.text = item.description
                                     }
                                 }
@@ -86,7 +84,7 @@ class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
                                 is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                                 is Resource.Success -> {
                                     binding.progressBar.visibility = View.GONE
-                                    result.data.data.results[0].let { item ->
+                                    result.data[0].let { item ->
                                         binding.txtDescriptionSeries.text = item.description
                                     }
                                 }
@@ -99,7 +97,7 @@ class DetailSuperFragment : Fragment(R.layout.fragment_detail_super) {
                                 is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                                 is Resource.Success -> {
                                     binding.progressBar.visibility = View.GONE
-                                    result.data.data.results[0].let { item ->
+                                    result.data[0].let { item ->
                                         binding.txtDescriptionStories.text = item.description
                                     }
                                 }
