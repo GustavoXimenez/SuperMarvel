@@ -2,7 +2,7 @@ package com.grjt.supermarvel.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Superhero(
+data class SuperheroModel(
     val id: Int = -1,
     @SerializedName("name")
     val name: String = "",
@@ -52,5 +52,5 @@ data class DataSuperhero(
 )
 
 data class DataResult(
-    val results: List<Superhero> = listOf()
+    val results: List<SuperheroModel> = listOf()
 )
