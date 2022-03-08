@@ -12,16 +12,16 @@
 ### Arquitectura - <abbr title="Hyper Text Markup Language">Clean architecture</abbr>
 ### Patrón de diseño - <abbr title="Hyper Text Markup Language">MVVM</abbr>
 ### Buenas practicas - <abbr title="Hyper Text Markup Language">Principios SOLID, corrutinas</abbr>
-### `Inyección de dependencias` - <abbr title="Hyper Text Markup Language">Dagger Hilt</abbr>
+### Inyección de dependencias - <abbr title="Hyper Text Markup Language">Dagger Hilt</abbr>
 ### ORM - <abbr title="Hyper Text Markup Language">Room</abbr>
 
-### 图片 Images
+### 图片 Imagenes
 
 > Lista de super heroes
 
-![Lista de super heroes](https://drive.google.com/file/d/1OzTMp5M2GrLIruGMbDBS6A9VL9XTuupz/view?usp=sharing)
+![](https://ibb.co/HDF7tvL)
 
 > Detalle del super heroe
 
-![](https://drive.google.com/file/d/1gvPGUEJA8m7NB70t79BZ6196V7BrRUlE/view?usp=sharing)
+![](https://ibb.co/ww131LG)
 
