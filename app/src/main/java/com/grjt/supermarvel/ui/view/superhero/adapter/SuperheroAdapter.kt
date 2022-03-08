@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
-import com.grjt.supermarvel.data.model.Superhero
 import com.grjt.supermarvel.databinding.SuperheroItemBinding
+import com.grjt.supermarvel.domain.model.Superhero
 
 class SuperheroAdapter(
     private val superheroList: List<Superhero>,
@@ -41,8 +41,8 @@ class SuperheroAdapter(
         val context: Context
     ): ViewHolder(binding.root) {
         fun bind(item: Superhero) {
-            val path = item.thumbnail.path
-            val extension = item.thumbnail.extension
+            val path = item.path
+            val extension = item.extension
             val url = "$path.$extension"
             Glide.with(context).load(url.replace("http", "https")).centerCrop().into(binding.imgSuperhero)
             binding.txtSuperhero.text = item.name

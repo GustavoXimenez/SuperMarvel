@@ -9,8 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.grjt.supermarvel.R
 import com.grjt.supermarvel.core.Resource
-import com.grjt.supermarvel.data.model.Superhero
+import com.grjt.supermarvel.data.model.SuperheroModel
 import com.grjt.supermarvel.databinding.FragmentSuperBinding
+import com.grjt.supermarvel.domain.model.Superhero
 import com.grjt.supermarvel.ui.viewmodel.SuperheroViewModel
 import com.grjt.supermarvel.ui.view.superhero.adapter.SuperheroAdapter
 import dagger.hilt.android.AndroidEntryPoint
