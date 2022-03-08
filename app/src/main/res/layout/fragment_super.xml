@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".ui.superhero.SuperFragment">
+    tools:context=".ui.view.superhero.SuperFragment">
 
     <RelativeLayout
         android:id="@+id/progress_bar"

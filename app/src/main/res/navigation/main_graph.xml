@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/superFragment"
-        android:name="com.grjt.supermarvel.ui.superhero.SuperFragment"
+        android:name="com.grjt.supermarvel.ui.view.superhero.SuperFragment"
         android:label="fragment_super"
         tools:layout="@layout/fragment_super" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailSuperFragment"
-        android:name="com.grjt.supermarvel.ui.detailsuperhero.DetailSuperFragment"
+        android:name="com.grjt.supermarvel.ui.view.detailsuperhero.DetailSuperFragment"
         android:label="fragment_detail_super"
         tools:layout="@layout/fragment_detail_super" >
         <argument

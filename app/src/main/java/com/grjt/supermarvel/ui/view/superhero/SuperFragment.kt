@@ -1,10 +1,8 @@
-package com.grjt.supermarvel.ui.superhero
+package com.grjt.supermarvel.ui.view.superhero
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -12,27 +10,22 @@ import com.google.android.material.snackbar.Snackbar
 import com.grjt.supermarvel.R
 import com.grjt.supermarvel.core.Resource
 import com.grjt.supermarvel.data.model.Superhero
-import com.grjt.supermarvel.data.remote.SuperDataSource
 import com.grjt.supermarvel.databinding.FragmentSuperBinding
-import com.grjt.supermarvel.presentation.SuperViewModelFactory
-import com.grjt.supermarvel.presentation.SuperheroViewModel
-import com.grjt.supermarvel.repository.RetrofitClient
-import com.grjt.supermarvel.repository.SuperRepositoryImpl
-import com.grjt.supermarvel.repository.WebService
-import com.grjt.supermarvel.ui.superhero.adapter.SuperheroAdapter
+import com.grjt.supermarvel.ui.viewmodel.SuperheroViewModel
+import com.grjt.supermarvel.ui.view.superhero.adapter.SuperheroAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SuperFragment : Fragment(R.layout.fragment_super), SuperheroAdapter.OnSuperheroClickListener {
 
     private lateinit var binding: FragmentSuperBinding
-    private val viewModel by viewModels<SuperheroViewModel> {
-        SuperViewModelFactory(SuperRepositoryImpl(SuperDataSource(RetrofitClient.webservice)))
-    }
+    private val viewModel: SuperheroViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSuperBinding.bind(view)
 
-        viewModel.fetchSuperhero().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.onCreate().observe(viewLifecycleOwner, Observer { result ->
             when(result) {
                 is Resource.Failure -> {
                     binding.progressBar.visibility = View.GONE
@@ -43,7 +36,7 @@ class SuperFragment : Fragment(R.layout.fragment_super), SuperheroAdapter.OnSupe
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    val adapter = SuperheroAdapter(result.data.data.results, this@SuperFragment)
+                    val adapter = SuperheroAdapter(result.data, this@SuperFragment)
                     binding.rvSuper.adapter = adapter
                 }
             }
